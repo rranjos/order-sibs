@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+   
+    postgres:
+        image: rranjos/postgres
+        restart: always
+        environment:
+          POSTGRES_PASSWORD: root
+        ports:
+            - "5432:5432"
+    pg:
+        image: dpage/pgadmin4:latest
+        environment:
+            PGADMIN_DEFAULT_EMAIL: anjos.ricardo@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: root
+        ports:
+        - "8081:80"
+    spring:
+        image: rranjos/sibs:v3
+        hostname: order
+        ports:
+            - "8080:8080"  
